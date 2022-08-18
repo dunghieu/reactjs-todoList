@@ -12,13 +12,7 @@ export interface TodoState {
 }
 
 const initialState: TodoState = {
-  todos: [
-    {
-      id: '1',
-      text: 'Use Redux',
-      completed: true,
-    },
-  ],
+  todos: [],
   filter: 'all',
 };
 
@@ -51,8 +45,35 @@ const todoSlice = createSlice({
     setFilter(state, action) {
       state.filter = action.payload;
     },
+    toggleAll(state, action) {
+      const isToggleAll = action.payload;
+      if (isToggleAll) {
+        state.todos = state.todos.map((todo) => {
+          todo.completed = false;
+          return todo;
+        });
+      } else {
+        state.todos = state.todos.map((todo) => {
+          todo.completed = true;
+          return todo;
+        });
+      }
+    },
+    editTodo(state, action) {
+      const {todoId, text} = action.payload;
+      const todo = state.todos.find((t) => t.id === todoId);
+      if (todo) {
+        todo.text = text;
+      }
+    },
   },
 });
+
+export const toggleAll = (state: boolean) => {
+  return (dispatch: any) => {
+    dispatch(todoSlice.actions.toggleAll(state));
+  };
+};
 
 export const todoActions = todoSlice.actions;
 export default todoSlice.reducer;

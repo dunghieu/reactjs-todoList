@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import {todoActions} from '../../store/todo-slice';
 import classes from './TodoItem.module.css';
@@ -12,6 +13,7 @@ type TodoProps = {
 };
 
 const TodoItem = (props: TodoProps) => {
+  const [isEditing, setIsEditing] = useState(false);
   const dispatch = useAppDispatch();
 
   const onDeleteHandler = () => {
@@ -20,6 +22,26 @@ const TodoItem = (props: TodoProps) => {
 
   const onToggleHandler = () => {
     dispatch(todoActions.toggleTodo(props.todo.id));
+  };
+
+  const onEditHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 0) {
+      dispatch(
+        todoActions.editTodo({
+          todoId: props.todo.id,
+          text: event.target.value,
+        })
+      );
+    } else {
+      dispatch(todoActions.removeTodo(props.todo.id));
+    }
+    setIsEditing(false);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      setIsEditing(false);
+    }
   };
 
   const checkboxClasses = `${classes.checkbox} ${
@@ -35,9 +57,23 @@ const TodoItem = (props: TodoProps) => {
         checked={props.todo.completed}
         onChange={onToggleHandler}
       />
-      <label htmlFor={`todo-${props.todo.id}`} className={checkboxClasses}>
-        {props.todo.text}
-      </label>
+      {!isEditing ? (
+        <label
+          className={checkboxClasses}
+          onDoubleClick={() => setIsEditing(true)}
+        >
+          {props.todo.text}
+        </label>
+      ) : (
+        <input
+          type='text'
+          className={classes.edit}
+          defaultValue={props.todo.text}
+          onBlur={onEditHandler}
+          autoFocus={true}
+          onKeyPress={handleKeyPress}
+        />
+      )}
       <button onClick={onDeleteHandler}>x</button>
     </li>
   );
