@@ -1,4 +1,4 @@
-import {useAppSelector} from '../hooks/index';
+import {useAppSelector} from '../../hooks/index';
 
 import TodoItem from './TodoItem';
 import classes from './TodoList.module.css';

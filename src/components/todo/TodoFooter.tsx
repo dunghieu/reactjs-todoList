@@ -1,6 +1,6 @@
 import React from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks';
-import {todoActions} from '../store/todo-slice';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {todoActions} from '../../store/todo-slice';
 import classes from './TodoFooter.module.css';
 
 const TodoFooter = () => {

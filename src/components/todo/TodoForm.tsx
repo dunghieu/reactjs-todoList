@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {useAppDispatch} from '../hooks';
-import {todoActions} from '../store/todo-slice';
+import {useAppDispatch} from '../../hooks';
+import {todoActions} from '../../store/todo-slice';
 
 import classes from './TodoForm.module.css';
 

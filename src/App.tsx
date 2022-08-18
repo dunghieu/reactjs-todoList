@@ -1,6 +1,6 @@
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
-import MainHeader from './components/MainHeader';
+import MainHeader from './components/layout/MainHeader';
 
 import Intro from './pages/Intro';
 import Todo from './pages/Todo';

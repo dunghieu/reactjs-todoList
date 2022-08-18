@@ -1,5 +1,5 @@
-import {useAppDispatch} from '../hooks';
-import {todoActions} from '../store/todo-slice';
+import {useAppDispatch} from '../../hooks';
+import {todoActions} from '../../store/todo-slice';
 import classes from './TodoItem.module.css';
 
 type TodoProps = {
