@@ -1,18 +1,20 @@
+import {Route, Routes} from 'react-router-dom';
 import './App.css';
-import TodoFooter from './components/TodoFooter';
-import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import MainHeader from './components/MainHeader';
+
+import Intro from './pages/Intro';
+import Todo from './pages/Todo';
 
 function App() {
   return (
     <div className='App'>
-      <header>
-        <p>Todos</p>
-      </header>
-      <main className='Todo'>
-        <TodoForm />
-        <TodoList />
-        <TodoFooter />
+      <MainHeader />
+      <main>
+        <Routes>
+          <Route path='/' element={<Intro />} />
+          <Route path='/todo' element={<Todo />} />
+          <Route path='*' element={<p>Page Not Found</p>} />
+        </Routes>
       </main>
     </div>
   );
