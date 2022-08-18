@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+}
+
+.footer .filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.filter button:hover,
+.filter button:focus,
+.filter button.active {
+  text-decoration: underline;
+  border: 1px solid #000;
+  color: red;
+}
