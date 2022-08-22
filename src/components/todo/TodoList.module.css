@@ -18,7 +18,9 @@
 .btn {
   display: flex;
   border: none;
-  background-color: #fff;
+  outline: none;
+  background-color: transparent;
+  color: wheat;
   cursor: pointer;
   transform: rotate(90deg);
   font-size: large;
