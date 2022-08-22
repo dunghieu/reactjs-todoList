@@ -35,7 +35,7 @@ const TodoItem = (props: TodoProps) => {
     } else {
       dispatch(todoActions.removeTodo(props.todo.id));
     }
-    setIsEditing(true);
+    setIsEditing(false);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
