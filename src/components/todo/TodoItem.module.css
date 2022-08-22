@@ -1,33 +1,68 @@
 .todo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
   width: 100%;
 }
 
 .todo label {
   display: flex;
   width: 100%;
-  margin-left: 1rem;
+  font-size: 24px;
+  line-height: 1.4em;
+  padding: 6px;
+}
+
+.checkbox {
+  margin: 0 0.8rem;
+  transform: scale(1.5);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.hide {
+  opacity: 0;
 }
 
 .checked {
   text-decoration: line-through;
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+
+.unchecked {
+  opacity: 1;
+  transition: all 0.4s ease;
 }
 
 .edit {
-  width: 85%;
-  height: 100%;
-  border: none;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  border: 0;
+  color: inherit;
+  padding: 6px;
+  border: 2px solid #ccc;
+  background-color: transparent;
   outline: none;
-  font-size: 1.2rem;
-  padding: 0.5rem;
 }
 
 .todo button {
+  float: right;
   outline: none;
   border: none;
+  width: 10%;
   background-color: transparent;
   color: wheat;
+  font-size: large;
+  display: none;
+}
+
+.edit:focus > button {
+  display: none;
+}
+
+.todo:hover > button {
+  color: wheat;
+  display: block;
 }

@@ -35,7 +35,7 @@ const TodoItem = (props: TodoProps) => {
     } else {
       dispatch(todoActions.removeTodo(props.todo.id));
     }
-    setIsEditing(false);
+    setIsEditing(true);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -45,19 +45,20 @@ const TodoItem = (props: TodoProps) => {
     }
   };
 
-  const checkboxClasses = `${classes.checkbox} ${props.todo.completed ? classes.checked : ''}`;
+  const checkboxClasses = `${classes.checkbox} ${isEditing ? classes.hide : ''}`;
+  const labelCheckedClasses = ` ${props.todo.completed ? classes.checked : classes.unchecked}`;
 
   return (
     <li className={classes.todo}>
       <input
         type="checkbox"
-        className={classes.checkbox}
+        className={checkboxClasses}
         id={`todo-${props.todo.id}`}
         checked={props.todo.completed}
         onChange={onToggleHandler}
       />
       {!isEditing ? (
-        <label className={checkboxClasses} onDoubleClick={() => setIsEditing(true)}>
+        <label className={labelCheckedClasses} onDoubleClick={() => setIsEditing(true)}>
           {props.todo.text}
         </label>
       ) : (
@@ -70,7 +71,7 @@ const TodoItem = (props: TodoProps) => {
           onKeyPress={handleKeyPress}
         />
       )}
-      <button onClick={onDeleteHandler}>x</button>
+      {!isEditing && <button onClick={onDeleteHandler}>x</button>}
     </li>
   );
 };

@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../../hooks/index';
-import {todoActions, toggleAll} from '../../store/todo-slice';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/index';
+import { todoActions, toggleAll } from '../../store/todo-slice';
 
 import TodoItem from './TodoItem';
 import classes from './TodoList.module.css';
@@ -43,11 +43,13 @@ const TodoList = () => {
   return (
     <>
       {todos.length > 0 && (
-        <button className={classes.btn} onClick={toggleAllHandler}>
-          ❯
-        </button>
+        <section className={classes.main}>
+          <input className={classes.btn} />
+          <label htmlFor={classes.btn} onClick={toggleAllHandler}></label>
+
+          <ul className={classes.list}>{todosList}</ul>
+        </section>
       )}
-      <ul className={classes.list}>{todosList}</ul>
     </>
   );
 };
